@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Remove</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 300px;
+      width: 600px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      color: #333;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+  </style>
+  <script>
+    function replaceString() {
+      var originalString = document.getElementById("originalString").value;
+      var replacedString = remove(originalString);
+      document.getElementById("output").textContent = replacedString;
+    }
+
+    function remove(str) {
+    var result = "";
+    var lines = str.split("\n");
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        line = line.trim();
+        if (line.length > 0) {
+            result += line.substring(1, line.length - 2) + "\n";
+        }
+    }
+    return result;
+}
+
+    function copyText(id) {
+  // Get the text field
+  var copyText = document.getElementById(id);
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.textContent);
+}
+  </script>
+</head>
+<body>
+  <h1>String Remove</h1>
+  <label for="originalString">Enter the original string:</label>
+  <textarea id="originalString"></textarea>
+  <br>
+  <button onclick="replaceString()">Remove</button>
+  <h2>Output:</h2>
+  <p id="output"></p>
+   <button onclick="copyText('output')">Copy</button>
+</body>
+</html>
